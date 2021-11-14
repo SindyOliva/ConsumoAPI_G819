@@ -1,4 +1,7 @@
 var UrlGetSocios = 'http://localhost:80/G8_19/controller/socios.php?op=GetSocios';
+var UrlPostSocios = 'http://localhost:80/G8_19/controller/socios.php?op=InsertSocio';
+var UrlDeleteSocios = 'http://localhost:80/G8_19/controller/socios.php?op=DeleteUno';
+var UrlPutSocios = 'http://localhost:80/G8_19/controller/socios.php?op=UpdateUno';
 
 $(document).ready(function() {
     CargarSocios();
@@ -30,4 +33,33 @@ function CargarSocios() {
             }
       }
     })
+}
+
+function AgregarSocio() {
+    var datossocio = {
+        id: $('#id').val(),
+        nombre: $('#nombre').val(),
+        razon_social: $('#razonsocial').val(),
+        direccion: $('#direccion').val(),
+        tipo_socio: $('#tiposocio').val(),
+        contacto: $('#contacto').val(),
+        email: $('#email').val(),
+        fecha_creado: $('#fechacreado').val(),
+        estado: $('#estado').val(),
+        telefono: $('#telefono').val()
+    };
+
+    var datossociojson = JSON.stringify(datossocio);
+
+    $.ajax({
+        url: UrlPostSocios,
+        type: 'POST',
+        data: datossociojson,
+        datatype:'JSON',
+        contentType: 'application/json',
+        success: function (response) {
+            console.log(response);
+        }
+    });
+    alert('Socio Agregado');
 }

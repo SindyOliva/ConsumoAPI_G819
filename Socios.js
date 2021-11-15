@@ -8,6 +8,7 @@ $(document).ready(function () {
     CargarSocios();
 });
 
+//FUNCIONA BIEN
 function CargarSocios() {
     $.ajax({
         url: UrlGetSocios,
@@ -40,7 +41,7 @@ function CargarSocios() {
     })
 }
 
-
+//FUNCIONA BIEN
 function AgregarSocio() {
     var datossocio = {
         id: $('#id').val(),
@@ -70,6 +71,7 @@ function AgregarSocio() {
     alert('Socio Agregado');
 }
 
+//FUNCIONA BIEN HASTA QUE LLEGA A LA FUNCION(ACTUALIZAR) DEL BOTON, AHI YA NO HACE NADA
 function CargarSocio(idsocio) {
 
     var datossocio = {
@@ -95,17 +97,19 @@ function CargarSocio(idsocio) {
             $('#fecha_creado').val(MiItems[0].FECHA_CREADO);
             $('#estado').val(MiItems[0].ESTADO);
             $('#telefono').val(MiItems[0].TELEFONO);
-            var btnactualizar = '<input type="submit" id="btn_actualizar" onclik="ActualizarSocio(' + MiItems[0].ID + ')" value="Actualizar Socio" class="btn btn-primary"></input>';
+            var btnactualizar = '<input type="submit" id="btn_actualizar" onclick="ActualizarSocio(' + MiItems[0].ID + ')" value="Actualizar Socio" class="btn btn-primary"></input>';
             $('.button').html(btnactualizar);
+            alert(MiItems[0].ID) //SI FUNCIONA Y ME NUESTRA CORRECTAMENTE ELID QUE HA SELECCIONADO
         }
     });
 
 }
-
+//AQUI COMIENZA EL ERROR, NO HACE NADA CON ESTA FUNCION
 function ActualizarSocio(idsocio) {
+    alert(idsocio); //PARA VER SI LEE LOS DATOS CORRECTAMENTE(PERO NO SE MUESTRA LO QUE ME INDICA QUE EL PROGRAMA NO ENTRA A ESTA FUNCION)
     var datossocio = {
         id: idsocio,
-        //id: $('#id').val(),
+        //ID: $('#id').val(),
         nombre: $('#nombre').val(),
         razon_social: $('#razon_social').val(),
         direccion: $('#direccion').val(),
@@ -116,9 +120,9 @@ function ActualizarSocio(idsocio) {
         estado: $('#estado').val(),
         telefono: $('#telefono').val()
     };
-
+    alert(datossocio);
     var datossociojson = JSON.stringify(datossocio);
-
+    
     $.ajax({
         url: UrlPutSocios,
         type: 'PUT',
@@ -130,8 +134,11 @@ function ActualizarSocio(idsocio) {
         }
     });
     alert("Socio Actualizado");
+    alert(datossocio);
 }
 
+
+//FUNCIONA BIEN
 function EliminarSocio(idsocio) {
     var datossocio = {
         id: idsocio

@@ -71,47 +71,41 @@ function AgregarSocio() {
 }
 
 function CargarSocio(idsocio) {
-    try {
-        var datossocio = {
-            ID: idsocio
-        };
-        var datossociojson = JSON.stringify(datossocio);
 
-        $.ajax({
-            url: UrlGetUno,
-            type: 'POST',
-            data: datossociojson,
-            datatype: 'JSON',
-            contentType: 'application/json',
-            success: function (response) {
-                var MiItems = response;
-                $('#id').val(MiItems[0].ID);
-                $('#nombre').val(MiItems[0].NOMBRE);
-                $('#razon_social').val(MiItems[0].RAZON_SOCIAL);
-                $('#direccion').val(MiItems[0].DIRECCION);
-                $('#tipo_socio').val(MiItems[0].TIPO_SOCIO);
-                $('#contacto').val(MiItems[0].CONTACTO);
-                $('#email').val(MiItems[0].EMAIL);
-                $('#fecha_creado').val(MiItems[0].FECHA_CREADO);
-                $('#estado').val(MiItems[0].ESTADO);
-                $('#telefono').val(MiItems[0].TELEFONO);
-                var btnactualizar = '<input type="submit" id="btn_actualizar" onclik="ActualizarSocio(' + MiItems[0].ID + ')" value="Actualizar Socio" class="btn btn-primary"></input>';
-                $('.button').html(btnactualizar);
-            }
-        });
+    var datossocio = {
+        id: idsocio
+    };
+    var datossociojson = JSON.stringify(datossocio);
 
-
-    }
-    catch (error) {
-
-        console.error(error);
-    }
+    $.ajax({
+        url: UrlGetUno,
+        type: 'POST',
+        data: datossociojson,
+        datatype: 'JSON',
+        contentType: 'application/json',
+        success: function (response) {
+            var MiItems = response;
+            $('#id').val(MiItems[0].ID);
+            $('#nombre').val(MiItems[0].NOMBRE);
+            $('#razon_social').val(MiItems[0].RAZON_SOCIAL);
+            $('#direccion').val(MiItems[0].DIRECCION);
+            $('#tipo_socio').val(MiItems[0].TIPO_SOCIO);
+            $('#contacto').val(MiItems[0].CONTACTO);
+            $('#email').val(MiItems[0].EMAIL);
+            $('#fecha_creado').val(MiItems[0].FECHA_CREADO);
+            $('#estado').val(MiItems[0].ESTADO);
+            $('#telefono').val(MiItems[0].TELEFONO);
+            var btnactualizar = '<input type="submit" id="btn_actualizar" onclik="ActualizarSocio(' + MiItems[0].ID + ')" value="Actualizar Socio" class="btn btn-primary"></input>';
+            $('.button').html(btnactualizar);
+        }
+    });
 
 }
 
 function ActualizarSocio(idsocio) {
     var datossocio = {
         id: idsocio,
+        //id: $('#id').val(),
         nombre: $('#nombre').val(),
         razon_social: $('#razon_social').val(),
         direccion: $('#direccion').val(),
@@ -122,6 +116,7 @@ function ActualizarSocio(idsocio) {
         estado: $('#estado').val(),
         telefono: $('#telefono').val()
     };
+
     var datossociojson = JSON.stringify(datossocio);
 
     $.ajax({
@@ -130,7 +125,7 @@ function ActualizarSocio(idsocio) {
         data: datossociojson,
         datatype: 'JSON',
         contentType: 'application/json',
-        success: function (response) {
+        success: function(response) {
             console.log(response);
         }
     });
@@ -149,7 +144,7 @@ function EliminarSocio(idsocio) {
         data: datossociojson,
         datatype: 'JSON',
         contentType: 'application/json',
-        success: function (response) {
+        success: function(response) {
             console.log(response)
         }
     });

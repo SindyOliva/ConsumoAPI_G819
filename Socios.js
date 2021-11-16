@@ -99,14 +99,14 @@ function CargarSocio(idsocio) {
             $('#telefono').val(MiItems[0].TELEFONO);
             var btnactualizar = '<input type="submit" id="btn_actualizar" onclick="ActualizarSocio(' + MiItems[0].ID + ')" value="Actualizar Socio" class="btn btn-primary"></input>';
             $('.button').html(btnactualizar);
-            alert(MiItems[0].ID) //SI FUNCIONA Y ME NUESTRA CORRECTAMENTE ELID QUE HA SELECCIONADO
+             
         }
     });
 
 }
-//AQUI COMIENZA EL ERROR, NO HACE NADA CON ESTA FUNCION
+
 function ActualizarSocio(idsocio) {
-    alert(idsocio); //PARA VER SI LEE LOS DATOS CORRECTAMENTE(PERO NO SE MUESTRA LO QUE ME INDICA QUE EL PROGRAMA NO ENTRA A ESTA FUNCION)
+    
     var datossocio = {
         id: idsocio,
         //ID: $('#id').val(),

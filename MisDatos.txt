@@ -1,0 +1,9 @@
+a.       Sección: 1900
+
+b.       Nombre completo: SINDY MARISOL OLIVA MARTINEZ
+
+c.       Numero de cuenta: 20191003905
+
+d.       Numero de grupo: 8
+
+LINK DE GITHUB: https://github.com/SindyOliva/ConsumoAPI_G819.git
